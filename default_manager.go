@@ -38,7 +38,7 @@ func (di defaultManager) Resolve(key DiKey, args ...interface{}) (IInjectable, e
 	}
 	if t, ok := di.table[key]; ok{
 		obj := reflect.New(t).Interface().(IInjectable)
-		obj.Initialize(args)
+		obj.Initialize(args...)
 		di.store[key] = obj
 		return obj, nil
 	}
